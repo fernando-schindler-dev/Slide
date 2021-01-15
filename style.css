@@ -1,0 +1,62 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Consolas", "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+html {
+  font-size: 16px;
+}
+li {
+  list-style: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #000;
+  overflow: hidden;
+}
+.container .slide {
+  display: flex;
+}
+.container .slide li {
+  margin: 10px;
+  min-width: 62.5rem;
+  min-height: 37.5rem;
+  border-radius: 0.9375rem;
+}
+.container .slide .yellow {
+  background: yellow;
+}
+.container .slide .gold {
+  background: gold;
+}
+.container .slide .orange {
+  background: orange;
+}
+.container .slide .orangered {
+  background: orangered;
+}
+.container .slide .red {
+  background: red;
+}
+.autor {
+  margin-top: 2rem;
+  font-weight: bold;
+}
+.autor p {
+  font-size: 1.6875rem;
+  color: #777;
+}
+.autor p span {
+  font-size: 1.9375rem;
+  text-decoration: underline;
+  color: #777;
+}
