@@ -23,28 +23,58 @@ body {
   background: #000;
   overflow: hidden;
 }
+.container {
+  display: flex;
+  flex-direction: column;
+}
 .container .slide {
   display: flex;
+  padding: 0 5000px;
+  transition: 0.3s;
 }
 .container .slide li {
-  margin: 10px;
-  min-width: 62.5rem;
-  min-height: 37.5rem;
+  min-width: 75rem;
+  min-height: 43.75rem;
   border-radius: 0.9375rem;
+  opacity: 0.8;
+  transform: scale(0.8);
+  transition: 0.3s;
 }
-.container .slide .yellow {
+.container .slide li.ativo {
+  opacity: 1;
+  transform: scale(1);
+}
+.container .menuSlide {
+  display: flex;
+  justify-content: center;
+}
+.container .menuSlide a {
+  cursor: pointer;
+  margin: 30px 10px;
+  border-radius: 50%;
+  min-width: 3.125rem;
+  min-height: 3.125rem;
+  opacity: 0.8;
+  transform: scale(0.8);
+  transition: 0.3s;
+}
+.container .menuSlide a.ativo {
+  opacity: 1;
+  transform: scale(1);
+}
+.container .yellow {
   background: yellow;
 }
-.container .slide .gold {
+.container .gold {
   background: gold;
 }
-.container .slide .orange {
+.container .orange {
   background: orange;
 }
-.container .slide .orangered {
+.container .orangered {
   background: orangered;
 }
-.container .slide .red {
+.container .red {
   background: red;
 }
 .autor {
@@ -52,11 +82,11 @@ body {
   font-weight: bold;
 }
 .autor p {
-  font-size: 1.6875rem;
+  font-size: 1.4375rem;
   color: #777;
 }
 .autor p span {
-  font-size: 1.9375rem;
+  font-size: 1.6875rem;
   text-decoration: underline;
   color: #777;
 }
