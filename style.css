@@ -29,7 +29,8 @@ body {
 }
 .container .slide {
   display: flex;
-  transition: 1s;
+  padding: 0 5000px;
+  transition: 0.3s;
 }
 .container .slide li {
   min-width: 75rem;
@@ -37,7 +38,7 @@ body {
   border-radius: 0.9375rem;
   opacity: 0.8;
   transform: scale(0.8);
-  transition: 1s;
+  transition: 0.3s;
 }
 .container .slide li.ativo {
   opacity: 1;
@@ -55,7 +56,7 @@ body {
   min-height: 3.125rem;
   opacity: 0.8;
   transform: scale(0.8);
-  transition: 1s;
+  transition: 0.3s;
 }
 .container .menuSlide a.ativo {
   opacity: 1;
