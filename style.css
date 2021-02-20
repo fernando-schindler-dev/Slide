@@ -28,7 +28,7 @@ body {
 }
 .container .slide {
   display: flex;
-  padding: 2rem 5000px 0 5000px;
+  padding: 2rem 300% 0 100%;
   transition: 0.3s;
 }
 .container .slide li {

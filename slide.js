@@ -7,37 +7,52 @@ class Slide {
     this.currentSlide = 0;
   }
 
-  slideMouseUp(event) {
-    this.positionMouseUp = event.clientX;
-    this.slideContainer.removeEventListener('mousemove', this.slideMouseMove);
+  slideOnEnd(event) {
+    if (event.type === 'mouseup') {
+      this.positionEnd = event.clientX;
+      this.slideContainer.removeEventListener('mousemove', this.slideOnMove);
+    } else if (event.type === 'touchend') {
+      this.positionEnd = event.changedTouches[0].clientX;
+      this.slideContainer.removeEventListener('touchmove', this.slideOnMove);
+    }
 
-    this.totalMouseMove = this.positionMouseDown - this.positionMouseUp;
+    this.totalMove = this.positionStart - this.positionEnd;
 
     this.slideContainer.style.transition = '0.3s';
-    if (this.totalMouseMove > 200) {
+    if (this.totalMove > 200) {
       this.selectSlide(this.currentSlide + 1);
-    } else if (this.totalMouseMove < -200) {
+    } else if (this.totalMove < -200) {
       this.selectSlide(this.currentSlide - 1);
     } else {
       this.selectSlide(this.currentSlide);
     }
   }
 
-  slideMouseMove(event) {
+  slideOnMove(event) {
     this.slideContainer.style.transition = '0s';
 
-    this.positionMouseMove = event.clientX;
+    if (event.type === 'mousemove') {
+      this.positionMove = event.clientX;
+    } else if (event.type === 'touchmove') {
+      this.positionMove = event.changedTouches[0].clientX;
+    }
+
     this.totalPxTransform =
-      this.positionMouseMove -
-      this.positionMouseDown +
+      this.positionMove -
+      this.positionStart +
       this.slidesDistances[this.currentSlide];
 
     this.slideContainer.style.transform = `translateX(${this.totalPxTransform}px)`;
   }
 
-  slideMouseDown(event) {
-    this.positionMouseDown = event.clientX;
-    this.slideContainer.addEventListener('mousemove', this.slideMouseMove);
+  slideOnStart(event) {
+    if (event.type === 'mousedown') {
+      this.positionStart = event.clientX;
+      this.slideContainer.addEventListener('mousemove', this.slideOnMove);
+    } else if (event.type === 'touchstart') {
+      this.positionStart = event.changedTouches[0].clientX;
+      this.slideContainer.addEventListener('touchmove', this.slideOnMove);
+    }
   }
 
   addClassName(className, btnIndex) {
@@ -89,14 +104,16 @@ class Slide {
 
     window.addEventListener('resize', this.handleRezise);
 
-    this.slideContainer.addEventListener('mousedown', this.slideMouseDown);
-    this.slideContainer.addEventListener('mouseup', this.slideMouseUp);
+    this.slideContainer.addEventListener('mousedown', this.slideOnStart);
+    this.slideContainer.addEventListener('touchstart', this.slideOnStart);
+    this.slideContainer.addEventListener('mouseup', this.slideOnEnd);
+    this.slideContainer.addEventListener('touchend', this.slideOnEnd);
   }
 
   bindEvents() {
-    this.slideMouseDown = this.slideMouseDown.bind(this);
-    this.slideMouseMove = this.slideMouseMove.bind(this);
-    this.slideMouseUp = this.slideMouseUp.bind(this);
+    this.slideOnStart = this.slideOnStart.bind(this);
+    this.slideOnMove = this.slideOnMove.bind(this);
+    this.slideOnEnd = this.slideOnEnd.bind(this);
     this.handleRezise = this.handleRezise.bind(this);
   }
 
