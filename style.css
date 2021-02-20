@@ -4,7 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Consolas", "Courier New", Courier, monospace;
+  font-family: 'Consolas', 'Courier New', Courier, monospace;
   font-weight: bold;
 }
 html {
@@ -17,15 +17,14 @@ li {
 body {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   height: 100vh;
   background: #000;
-  overflow: hidden;
 }
 .container {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 .container .slide {
   display: flex;
@@ -33,32 +32,32 @@ body {
   transition: 0.3s;
 }
 .container .slide li {
-  min-width: 75rem;
-  min-height: 43.75rem;
+  min-width: 70vw;
+  min-height: 40vw;
   border-radius: 0.9375rem;
   opacity: 0.8;
   transform: scale(0.8);
   transition: 0.3s;
 }
-.container .slide li.ativo {
+.container .slide li.active {
   opacity: 1;
   transform: scale(1);
 }
-.container .menuSlide {
+.container .slideNav {
   display: flex;
   justify-content: center;
 }
-.container .menuSlide a {
+.container .slideNav a {
   cursor: pointer;
-  margin: 30px 10px;
+  margin: 2rem 0.5rem;
   border-radius: 50%;
-  min-width: 3.125rem;
-  min-height: 3.125rem;
+  min-width: 3rem;
+  min-height: 3rem;
   opacity: 0.8;
   transform: scale(0.8);
   transition: 0.3s;
 }
-.container .menuSlide a.ativo {
+.container .slideNav a.active {
   opacity: 1;
   transform: scale(1);
 }
@@ -77,16 +76,50 @@ body {
 .container .red {
   background: red;
 }
-.autor {
-  margin-top: 2rem;
+
+.author {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* margin: 0 1.5625rem 2rem 1.5625rem; */
   font-weight: bold;
+  text-align: center;
+  color: #777;
 }
-.autor p {
+.author p {
+  padding: 0 0.4375rem;
+}
+.author p:nth-child(1) {
   font-size: 1.4375rem;
-  color: #777;
 }
-.autor p span {
-  font-size: 1.6875rem;
+.author p:nth-child(2) {
+  font-size: 1.625rem;
   text-decoration: underline;
-  color: #777;
+}
+
+@media (min-width: 100rem) {
+  .container .slide li {
+    min-width: 70rem;
+    min-height: 40rem;
+  }
+}
+
+@media (max-width: 50rem) {
+  .container .slide li {
+    min-width: 80vw;
+    min-height: 45vw;
+  }
+  .container .slideNav a {
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    margin: 1rem 0.25rem;
+  }
+  .author p:nth-child(1) {
+    font-size: 1.125rem;
+  }
+  .author p:nth-child(2) {
+    font-size: 1.3125rem;
+    text-decoration: underline;
+  }
 }
